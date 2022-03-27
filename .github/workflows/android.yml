@@ -31,6 +31,9 @@ jobs:
         key: ${{ runner.os }}-gradle-caches-${{ hashFiles('gradle/wrapper/gradle-wrapper.properties') }}
         restore-keys: |
           ${{ runner.os }}-gradle-caches-
+    - name: Generate Grade
+      run: |
+      react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res
     - name: Make Gradlew Executable
       run: cd android && chmod +x ./gradlew
 
